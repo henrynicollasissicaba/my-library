@@ -8,7 +8,7 @@ const Page = () => {
     const { readBooks } = useLibrary()
 
     return (
-        <section className="pb-5">
+        <section className="pb-5 min-h-[calc(100vh-340px)]">
             <Heading>Livros Lidos</Heading>
             {readBooks.length > 0 ? (
                 <div className="flex flex-wrap gap-6">
