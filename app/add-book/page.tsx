@@ -10,9 +10,10 @@ const selectClassName = "w-[51rem] p-2 outline-none rounded-md shadow-lg cursor-
 const divInputsClassName = "w-full md:w-64 flex flex-col gap-2"
 const labelClassName = "font-bold text-[#ecebeb] cursor-pointer"
 
-const GENDERS = [
-  "Romance", "Terror", "Ficção", "Ficção cientifica", "Não-ficção",
-  "Ação", "Drama", "Comédia", "Fábula", "Novela", "Auto-ajuda",
+const CATEGORIES = [
+  "Administração e Economia", "Autoajuda", "Educação e Didáticos", "Fantasia e Horror",
+  "HQs e Mangás", "Infantil", "Literatura e Ficção", "Romance", "Saúde e Medicina",
+  "Política e Filosofia"
 ]
 
 const STATUS = [
@@ -24,7 +25,7 @@ const Page = () => {
     name: "",
     author: "",
     numberOfPages: 0,
-    gender: "",
+    category: "",
     status: "",
     id: 0
   }
@@ -93,15 +94,15 @@ const Page = () => {
           />
         </div>
 
-        <select name="gender" id="gender" className={selectClassName} value={book.gender}
+        <select name="category" id="category" className={selectClassName} value={book.category}
         onChange={handleChange} required>
-          <option value="" disabled hidden>Selecione o gênero do livro</option>
-          {GENDERS.map((gender) => (
+          <option value="" disabled hidden>Selecione a categoria do livro</option>
+          {CATEGORIES.map((category) => (
             <option
-            key={gender} 
-            value={gender}
-            defaultChecked={book.gender === gender}>
-              {gender}
+            key={category} 
+            value={category}
+            defaultChecked={book.category === category}>
+              {category}
             </option>
           ))}
         </select>

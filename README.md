@@ -1,6 +1,10 @@
-<h3 align="center">My Library - Concluído :white_check_mark: | Versão 1.0.0</h3>
+<h3 align="center">My Library - Concluído :white_check_mark: | Versão 1.0.1</h3>
 
 ---
+
+## Atualização 
+
+Modificação nas categorias dos livros.
 
 ## Sobre o projeto :computer:
 

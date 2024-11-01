@@ -8,7 +8,7 @@ type BookProps = {
   name: string;
   author: string;
   numberOfPages: number;
-  gender: string;
+  category: string;
   status: string;
 };
 
