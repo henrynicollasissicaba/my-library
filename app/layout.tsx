@@ -26,13 +26,15 @@ export default function RootLayout({
       >
         <AsideBar />
         <main className="relative w-full sm:w-[calc(100%-270px)] left-0 
-                          pl-4 pr-4 sm:pl-10 sm:p-4 sm:left-[270px] min-h-screen flex flex-col">
+        pl-4 pr-4 sm:pl-10 sm:p-4 sm:left-[270px] min-h-screen flex flex-col">
               <LibraryProvider>
                 {children}  
               </LibraryProvider>
-              <footer className="md:mt-auto mt-16 mb-2 md:mb-0 flex justify-center">
-                <p className="text-center text-[#ecebeb] text-sm font-bold">&copy; Henry Nicollas Issicaba Neves - All Rights Reserved - 2024</p>
-              </footer>
+          <footer className="flex justify-center mt-auto">
+            <p className="text-center text-[#ecebeb] text-[0.675rem] md:text-sm font-bold">
+              &copy; Henry Nicollas Issicaba Neves - All Rights Reserved - 2024
+            </p>
+          </footer>
         </main>
       </body>
     </html>

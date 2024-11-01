@@ -18,14 +18,21 @@ const Page = () => {
     <section className="pb-5">
         <div className="flex flex-col">
           <Heading>Livros cadastrados</Heading>
-          <div className="flex mb-8 items-center">
-            <Checkbox id="order-books" checked={isChecked} onChange={handleCheckbox} color='default'/>
-            <label htmlFor="order-books"
-            className="text-lg cursor-pointer text-[#ecebeb] font-medium"
-            >
-              Colocar em ordem alfabética
-            </label>
-          </div>
+          {books.length > 0 ? 
+          (
+            <div className="flex mb-8 items-center">
+              <Checkbox id="order-books" checked={isChecked} onChange={handleCheckbox} color='default'/>
+              <label htmlFor="order-books"
+              className="text-lg cursor-pointer text-[#ecebeb] font-medium"
+              >
+                Colocar em ordem alfabética
+              </label>
+            </div>
+          ) : (
+            <p className="text-lg text-[#ecebeb] font-medium">
+              Nenhum livro cadastrado.
+            </p>
+          )}
         </div>
         <div className="flex flex-wrap gap-6">
           {isChecked ? 

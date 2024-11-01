@@ -26,7 +26,7 @@ const AsideBar = () => {
                 <IoMenu className="w-8 h-8"/>
             </button>
             <aside className={`fixed bg-[#585858] z-10 top-0 bottom-0 px-6 w-[270px]
-                shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] overflow-hidden h-screen max-h-screen
+                shadow-[4.0px_8.0px_8.0px_rgba(0,0,0,0.38)] overflow-hidden max-h-screen
                 -translate-x-96 sm:-translate-x-0 transition-all ${isOpen ? 
                 "translate-x-0" : "-translate-x-96"}`}
             >

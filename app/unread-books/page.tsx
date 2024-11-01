@@ -8,21 +8,27 @@ const Page = () => {
     const { unreadBooks } = useLibrary()
 
     return (
-        <section>
+        <section className="pb-5">
             <Heading>Livros não lidos</Heading>
-            <div className="flex flex-wrap gap-6">
-                {unreadBooks.map(({ name, author, numberOfPages, gender, status, id }) => (
-                    <BookCard
-                        key={id}
-                        name={name}
-                        author={author}
-                        numberOfPages={numberOfPages}
-                        gender={gender}
-                        status={status}
-                        id={id}
-                    />
-                ))}
-            </div>
+            {unreadBooks.length > 0 ? (
+                <div className="flex flex-wrap gap-6">
+                    {unreadBooks.map(({ name, author, numberOfPages, gender, status, id }) => (
+                        <BookCard
+                            key={id}
+                            name={name}
+                            author={author}
+                            numberOfPages={numberOfPages}
+                            gender={gender}
+                            status={status}
+                            id={id}
+                        />
+                    ))}
+                </div>
+            ):(
+            <p className="text-lg text-[#ecebeb] font-medium">
+              Nenhum livro pendente para leitura foi encontrado.
+            </p>
+            )}
         </section>
     )
 }
