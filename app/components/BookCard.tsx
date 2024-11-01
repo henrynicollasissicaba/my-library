@@ -7,12 +7,12 @@ interface BookCardProps {
     name: string,
     author: string,
     numberOfPages: number,
-    gender: string,
+    category: string,
     status: string,
     id: number
 }
 
-const BookCard = ({ name, author, numberOfPages, gender, status, id }: BookCardProps) => {
+const BookCard = ({ name, author, numberOfPages, category, status, id }: BookCardProps) => {
     const { removeBook, markAsRead } = useLibrary() 
 
     return (
@@ -33,7 +33,7 @@ const BookCard = ({ name, author, numberOfPages, gender, status, id }: BookCardP
                     </span>
                 </div>
             </div>
-            <BookTags gender={gender} numberOfPages={numberOfPages} status={status}/>
+            <BookTags category={category} numberOfPages={numberOfPages} status={status}/>
             <div className="mt-auto flex justify-between gap-4 flex-wrap">
                 <Button
                     label="Excluir livro"

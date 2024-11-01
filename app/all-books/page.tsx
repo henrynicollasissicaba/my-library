@@ -36,23 +36,23 @@ const Page = () => {
         </div>
         <div className="flex flex-wrap gap-6">
           {isChecked ? 
-            orderedBooks.map(({ name, author, numberOfPages, gender, status, id }) => (
+            orderedBooks.map(({ name, author, numberOfPages, category, status, id }) => (
               <BookCard
                 name={name}
                 author={author}
                 numberOfPages={numberOfPages}
-                gender={gender}
+                category={category}
                 status={status}
                 id={id}
                 key={id}
               />
             )) : 
-            books.map(({ name, author, numberOfPages, gender, status, id }) => (
+            books.map(({ name, author, numberOfPages, category, status, id }) => (
               <BookCard 
                 name={name}
                 author={author}
                 numberOfPages={numberOfPages}
-                gender={gender}
+                category={category}
                 status={status}
                 id={id}
                 key={id}

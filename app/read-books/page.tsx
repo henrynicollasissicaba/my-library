@@ -12,13 +12,13 @@ const Page = () => {
             <Heading>Livros Lidos</Heading>
             {readBooks.length > 0 ? (
                 <div className="flex flex-wrap gap-6">
-                    {readBooks.map(({ name, author, numberOfPages, gender, status, id }) => (
+                    {readBooks.map(({ name, author, numberOfPages, category, status, id }) => (
                         <BookCard
                             key={id}
                             name={name}
                             author={author}
                             numberOfPages={numberOfPages}
-                            gender={gender}
+                            category={category}
                             status={status}
                             id={id}
                         />

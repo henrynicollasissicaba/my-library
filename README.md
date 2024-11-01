@@ -1,8 +1,8 @@
-<h3 align="center">My Library - Concluído :white_check_mark: | Versão 1.0.1</h3>
+<h3 align="center">My Library - Concluído :white_check_mark: | Versão 1.0.2</h3>
 
 ---
 
-## Atualização 
+## Última atualização 
 
 Modificação nas categorias dos livros.
 

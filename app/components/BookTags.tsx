@@ -1,18 +1,18 @@
 import React from 'react'
 
 interface BookTagsInterface {
-    gender: string,
+    category: string,
     numberOfPages: number,
     status: string
 }
 
-const BookTags = ({ gender, numberOfPages, status }: BookTagsInterface) => {
+const BookTags = ({ category, numberOfPages, status }: BookTagsInterface) => {
   return (
     <div className="flex justify-between my-8 bg-[#414141] p-4 rounded-md">
             <div className="flex items-center gap-3 flex-wrap">
                 <p className="bg-blue-200 text-blue-500 px-4 py-1
                 max-w-max rounded-3xl">
-                    {gender}
+                    {category}
                 </p>
                 <p className="bg-orange-200 text-orange-500 px-4 py-1
                 max-w-max rounded-3xl">{numberOfPages} páginas</p>
