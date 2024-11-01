@@ -8,7 +8,7 @@ const Page = () => {
     const { unreadBooks } = useLibrary()
 
     return (
-        <section className="pb-5 min-h-[calc(100vh-340px)]">
+        <section className="pb-5">
             <Heading>Livros não lidos</Heading>
             {unreadBooks.length > 0 ? (
                 <div className="flex flex-wrap gap-6">

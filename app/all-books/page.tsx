@@ -15,7 +15,7 @@ const Page = () => {
   }
 
   return (
-    <section className="pb-5 min-h-[calc(100vh-340px)]">
+    <section className="pb-5">
         <div className="flex flex-col">
           <Heading>Livros cadastrados</Heading>
           {books.length > 0 ? 

@@ -22,20 +22,21 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${poppins.className} bg-[#414141]`}
+        className={`${poppins.className} bg-[#414141] min-h-screen flex flex-col`}
       >
         <AsideBar />
         <main className="relative w-full sm:w-[calc(100%-270px)] left-0 
-        pl-4 pr-4 sm:pl-10 sm:p-4 sm:left-[270px] min-h-screen flex flex-col">
+        pl-4 pr-4 sm:pl-10 sm:p-4 sm:left-[270px] min-h-[calc(100vh-340px)]">
               <LibraryProvider>
                 {children}  
               </LibraryProvider>
-          <footer className="flex justify-center mt-auto">
-            <p className="text-center text-[#ecebeb] text-[0.675rem] md:text-sm font-bold">
-              &copy; Henry Nicollas Issicaba Neves - All Rights Reserved - 2024
-            </p>
-          </footer>
         </main>
+        <footer className="mt-auto">
+          <p className="text-center text-[#ecebeb] text-[0.675rem] md:text-sm font-bold
+          relative w-full sm:w-[calc(100%-270px)] sm:left-[270px] left-0 pb-1">
+            &copy; Henry Nicollas Issicaba Neves - All Rights Reserved - 2024
+          </p>
+        </footer>
       </body>
     </html>
   );
