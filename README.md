@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<h3 align="center">My Library - Concluído :white_check_mark: | Versão 1.0.0</h3>
 
-## Getting Started
+---
 
-First, run the development server:
+## Sobre o projeto :computer:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Uma aplicação web desenvolvida com ReactJS, NextJS e TailwindCSS que simula uma biblioteca virtual
+na qual você pode cadastrar todos os seus livros, inclusive, os você já leu ou lerá futuramente. Todos os livros cadastrados ficam salvos no Armazenamento Local do seu navegador, evitando com que os dados inseridos sejam apagados após o recarregamento da página.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Frameworks / Libraries utilizados no projeto :bulb:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [x] NextJS;
+- [x] ReactJS;
+- [x] TailwindCSS;
+- [x] Sweetalert2;
+- [x] Material UI e;
+- [x] Magic UI.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Funcionalidades :wrench:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [x] Cadastrar um novo livro;
+- [x] Visualizar os livros em ordem alfabética;
+- [x] Visualizar a quantidade de livros cadastrados;
+- [x] Visualizar a quantidade de livros lidos;
+- [x] Visualizar a quantidade de livros não lidos;
+- [x] Marcar um livro como "lido" e;
+- [x] Excluir um livro.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Tecnologias usadas :star:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<div display="flex" gap="16px">
+  <img width="50px" height="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg" />
+  <img width="50px" height="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" />
+  <img width="50px" height="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" />
+  <img width="50px" height="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" />
+  <img width="50px" height="50px" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg" />
+</div>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Autor :raising_hand:
+<p><b>Henry Nicollas Issicaba Neves</b></p>
+<div display="flex">
+  <a href="https://www.linkedin.com/in/henry-nicollas-issicaba-neves-05a54024a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+</div>
