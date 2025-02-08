@@ -1,5 +1,11 @@
+import CreateBookForm from "@/app/components/forms/CreateBookForm";
+import Heading from "@/app/components/Heading";
+
 export default function AddBookPage(){
     return(
-        <h1>Add book</h1>
+        <main>
+            <Heading title="Cadastrar" highlightWord="livro"/>
+            <CreateBookForm />
+        </main>
     )
 }

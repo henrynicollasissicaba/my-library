@@ -1,7 +1,7 @@
 'use client'
 
 import { ShinyButton } from "@/app/components/ShinyButton";
-import Input from "./Input";
+import Input from "../Input";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSignIn } from "@clerk/nextjs";

@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "@/app/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
+import SideBar from "../components/SideBar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+  weight: ["400", "700"]
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,13 +22,19 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
+      <html lang="pt-BR">
         <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+          className={`${poppins.className} antialiased`}
         >
           <Toaster richColors/>
-          <h1>Private Layout</h1>
-          {children}
+          <div className="grid md:grid-cols-[17rem_1fr] text-[#F4F4F5]">
+            <div>
+              <SideBar />
+            </div>
+            <div className="p-4 bg-neutral-800 min-h-screen">
+              {children}
+            </div>
+          </div>
         </body>
       </html>
     </ClerkProvider>
