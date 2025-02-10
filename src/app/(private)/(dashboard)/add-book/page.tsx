@@ -1,5 +1,5 @@
-import CreateBookForm from "@/app/components/forms/CreateBookForm";
-import Heading from "@/app/components/Heading";
+import CreateBookForm from "@/app/components/pages/CreateBookForm";
+import Heading from "@/app/components/ui/Heading";
 
 export default function AddBookPage(){
     return(

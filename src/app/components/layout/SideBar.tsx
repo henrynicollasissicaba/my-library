@@ -2,7 +2,7 @@
 
 import MenuIcon from '@mui/icons-material/Menu';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import MenuItemLink from "./MenuItemLink";
+import MenuItemLink from "@/app/components/sections/MenuItemLink";
 import HomeIcon from '@mui/icons-material/Home';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
@@ -10,10 +10,10 @@ import DoneAllIcon from '@mui/icons-material/DoneAll';
 import RemoveDoneIcon from '@mui/icons-material/RemoveDone';
 import ModelTrainingIcon from '@mui/icons-material/ModelTraining';
 
-import { UserButton } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation';
-import Heading from './Heading';
+import Heading from '@/app/components/ui/Heading';
+import ClerkUserButton from '@/app/components/ClerkUserButton';
 
 
 interface MenuLink {
@@ -44,12 +44,13 @@ export default function SideBar(){
         <>
             <aside 
                 className={`bg-neutral-300 min-h-screen fixed w-[17rem] p-4 flex flex-col justify-between z-50
-                    md:translate-x-0 transition-transform ${isSidebarOpen ? "translate-x-0" : "translate-x-[-17rem]"}`}
+                    md:translate-x-0 transition-transform ${isSidebarOpen ? "translate-x-0" : "translate-x-[-17rem]"}
+                    shadow-md`}
                 >
                 <nav className="flex flex-col gap-10">
                     <div className="flex items-center gap-2">
                         <AutoStoriesIcon />
-                        <Heading title="My" highlightWord="Library"/>
+                        <Heading title="My" highlightWord="Library" className="mt-0 ml-0"/>
                     </div>
 
                     <ul className="flex flex-col gap-2">
@@ -59,7 +60,7 @@ export default function SideBar(){
                     </ul>
                 </nav>
                 <div className="block ml-auto">
-                    <UserButton appearance={{ elements: { userButtonAvatarBox: { width: "2.5rem", height: "2.5rem" } }}}/>
+                    <ClerkUserButton />
                 </div>
             </aside>
             <button 

@@ -3,7 +3,7 @@ import { Poppins } from "next/font/google";
 import "@/app/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
-import SideBar from "../components/SideBar";
+import SideBar from "@/app/components/layout/SideBar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -31,7 +31,7 @@ export default function RootLayout({
             <div>
               <SideBar />
             </div>
-            <div className="p-4 bg-neutral-800 min-h-screen">
+            <div className="flex flex-col bg-neutral-800 min-h-screen w-full max-w-6xl mx-auto px-2">
               {children}
             </div>
           </div>

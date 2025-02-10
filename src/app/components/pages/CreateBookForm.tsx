@@ -3,13 +3,13 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod"
-import Input from "../Input";
-import MenuItem from '@mui/material/MenuItem';
-import { ShinyButton } from "../ShinyButton";
+import { ShinyButton } from "../ui/ShinyButton";
 import { createBookAction } from "@/actions/book-actions";
-import { createBookSchema } from "@/schemas/bookSchema";
+import { booksCategory, bookStatus, createBookSchema } from "@/schemas/bookSchema";
 import { toast } from "sonner";
 import { useEffect } from "react";
+import Input from "../ui/Input";
+import MenuItem from '@mui/material/MenuItem';
 
 const customInputColors = {
     border: "#fff",
@@ -19,16 +19,6 @@ const customInputColors = {
     inputText: "#fff",
     helperText: "#fff"
 };
-
-const booksCategory = [
-    "Administração e Economia", "Autoajuda", "Educação e Didáticos", "Fantasia e Horror", "HQs e Mangás", "Infantil",
-    "Internacionais", "Literatura e Ficção", "Religião e Espiritualidade", "Romance", "Saúde e Medicina",
-    "Política e Filosofia", "Biografia", "Gastronomia", "Tecnologia"
-]
-
-const bookStatus = [
-    "Lido", "Lendo", "Não lido"
-]
 
 type CreateBookFormData = z.infer<typeof createBookSchema>
 
@@ -52,7 +42,9 @@ export default function CreateBookForm(){
                 formData.append(key, value.toString())
             })
 
-            await createBookAction(formData)
+            toast.promise(createBookAction((formData)), {
+                loading: "Cadastrando livro..."
+            })
 
             toast.success("Livro cadastrado com sucesso!")
         } catch (error) {

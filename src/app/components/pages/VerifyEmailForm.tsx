@@ -1,7 +1,7 @@
 'use client'
 
-import Input from "@/app/components/Input"
-import { ShinyButton } from "@/app/components/ShinyButton"
+import Input from "@/app/components/ui/Input"
+import { ShinyButton } from "@/app/components/ui/ShinyButton"
 import { FormEvent, useState } from "react"
 import { useRouter } from "next/navigation"
 import { useSignUp } from "@clerk/nextjs"

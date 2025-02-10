@@ -26,6 +26,7 @@ export default {
   				foreground: 'hsl(var(--primary-foreground))'
   			},
 			neutral: {
+				'200': "#2a2a2f",
 				'300': '#1D1D21',
 				'800': '#0D0D0F'
 			},

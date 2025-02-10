@@ -1,8 +1,8 @@
 'use client'
 
 import { FormEvent, useEffect, useState } from "react"
-import Input from "@/app/components/Input"
-import { ShinyButton } from "@/app/components/ShinyButton"
+import Input from "@/app/components/ui/Input"
+import { ShinyButton } from "@/app/components/ui/ShinyButton"
 import { useSignUp } from "@clerk/nextjs"
 import { isClerkAPIResponseError } from "@clerk/nextjs/errors"
 import { toast } from "sonner"

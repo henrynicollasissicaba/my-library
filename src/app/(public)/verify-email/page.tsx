@@ -1,4 +1,4 @@
-import VerifyEmailForm from "@/app/components/forms/VerifyEmailForm";
+import VerifyEmailForm from "@/app/components/pages/VerifyEmailForm";
 import Image from "next/image";
 
 export default function VerifyEmailPage(){

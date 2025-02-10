@@ -5,8 +5,8 @@ import { isClerkAPIResponseError } from "@clerk/nextjs/errors"
 import { useRouter } from "next/navigation"
 import { FormEvent, useState } from "react"
 import { toast } from "sonner"
-import Input from "@/app/components/Input"
-import { ShinyButton } from "@/app/components/ShinyButton"
+import Input from "@/app/components/ui/Input"
+import { ShinyButton } from "@/app/components/ui/ShinyButton"
 
 export default function ResetPasswordForm(){
     const [email, setEmail] = useState('')
