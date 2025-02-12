@@ -8,17 +8,15 @@ import BookPagination from "../ui/BookPagination"
 import { getAllBooksAction } from "@/actions/book-actions"
 interface BookListProps {
     initialBooks: Book[]
-    totalBooks: number
+    totalPages: number
     currentPage: number
     booksPerPage: number
 }
 
-export default function BookList({ initialBooks, totalBooks, currentPage, booksPerPage }: BookListProps){
+export default function BookList({ initialBooks, totalPages, currentPage }: BookListProps){
     const [books, setBooks] = useState<Book[]>([])
     const [filteredBooks, setFilteredBooks] = useState<Book[]>([])
     const [search, setSearch] = useState("")
-
-    const totalPages = Math.ceil(totalBooks / booksPerPage)
 
     useEffect(() => {
         const fetchBooks = async () => {

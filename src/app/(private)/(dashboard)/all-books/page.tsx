@@ -7,16 +7,21 @@ export default async function AllBooksPage({ searchParams }: { searchParams: Pro
     const page = (await searchParams).page
     const currentPage = Number(page) || 1
 
-    const totalBooks = await getTotalBooksAction()
-    if(!totalBooks) return
-
     const books = await getBooksAction(currentPage)
-    if(!books) return
+    const totalBooks = await getTotalBooksAction()
+
+    const totalPages = totalBooks ? Math.ceil(totalBooks / Book.BOOKS_PER_PAGE) : 0
 
     return(
         <main className="flex flex-col x-full min-h-dvh">
             <Heading title="Livros" highlightWord="cadastrados"/>
-            <BookList initialBooks={books} currentPage={currentPage} totalBooks={totalBooks} booksPerPage={Book.BOOKS_PER_PAGE}/>
+            {books && books.length > 0 ? (
+                <BookList initialBooks={books} currentPage={currentPage} totalPages={totalPages} booksPerPage={Book.BOOKS_PER_PAGE}/>
+            ) : (
+                <span className="text-sm italic text-zinc-400 mt-4 ml-3">
+                    Não foram encontrados livros cadastrados.
+                </span>
+            )}
         </main>
     )
 }

@@ -19,9 +19,6 @@ export async function createBookAction(formData: FormData){
         // Criação do livro
         await Book.createBook(validatedData);
 
-        // Revalidação do cache
-        revalidatePath('/all-books');
-
         // Retorno de sucesso
         return { success: true };
 
@@ -42,8 +39,8 @@ export async function createBookAction(formData: FormData){
     }
 }
 
-export async function getBooksAction(currentPage: number){
-    const books = await Book.getBooks(currentPage)
+export async function getBooksAction(currentPage: number, bookStatus?: string){
+    const books = await Book.getBooks(currentPage, bookStatus)
     return books
 }
 
@@ -62,8 +59,8 @@ export async function getSearchedBooksAction(search: string){
     return searchedBooks
 }
 
-export async function getTotalBooksAction(){
-    const total = await Book.totalBooks()
+export async function getTotalBooksAction(bookStatus?: string){
+    const total = await Book.totalBooks(bookStatus)
     return total
 }
 

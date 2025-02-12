@@ -28,8 +28,8 @@ const menuLinks: MenuLink[] = [
     { key: 2, path: "/add-book", label: "Cadastrar livro", icon: <AddCircleOutlineRoundedIcon /> },
     { key: 3, path: "/all-books", label: "Livros cadastrados", icon: <AutoStoriesIcon /> },
     { key: 4, path: "/books-read", label: "Livros lidos", icon: <DoneAllIcon /> },
-    { key: 5, path: "/non-books-read", label: "Livros não lidos", icon: <RemoveDoneIcon /> },
-    { key: 6, path: "/reading-books", label: "Livros em leitura", icon: <ModelTrainingIcon /> }
+    { key: 6, path: "/reading-books", label: "Livros em leitura", icon: <ModelTrainingIcon /> },
+    { key: 5, path: "/non-books-read", label: "Livros não lidos", icon: <RemoveDoneIcon /> }
 ]
 
 export default function SideBar(){

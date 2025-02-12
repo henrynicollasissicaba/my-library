@@ -18,15 +18,22 @@ export interface createBookParams {
     status: string
 }
 
-export const BOOKS_PER_PAGE = 2
+export enum BOOK_STATUS {
+    READ = "Lido",
+    READING = "Lendo",
+    NON_READ = "Não lido"
+}
 
-export async function getBooks(currentPage: number){
+export const BOOKS_PER_PAGE = 10
+
+export async function getBooks(currentPage: number, bookStatus?: string){
     const { userId } = await auth()
     if(!userId) return
 
     const books: Book[] = await prisma.book.findMany({
         where: {
-            userId
+            userId,
+            status: bookStatus
         },
         take: BOOKS_PER_PAGE,
         skip: (currentPage - 1) * BOOKS_PER_PAGE,
@@ -98,11 +105,16 @@ export async function finishLecture(bookId: number){
     })
 }
 
-export async function totalBooks(){
+export async function totalBooks(bookStatus?: string){
     const { userId } = await auth()
     if(!userId) return
 
-    const total = await prisma.book.count({ where: { userId } })
+    const total = await prisma.book.count({
+        where: {
+            userId,
+            status: bookStatus
+        }
+    })
     return total
 }
 

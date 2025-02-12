@@ -46,6 +46,9 @@ export default function BookPagination({ currentPage, totalPages }: PaginationPr
                 />
             )}
             sx={{
+                '& .MuiPaginationItem-ellipsis': {
+                    color: "#fff"
+                },
                 '&.MuiPagination-outlined': {
                   backgroundColor: '#1D1D21',
                   padding: ".5rem 1rem",
