@@ -11,11 +11,11 @@ import { useEffect } from "react";
 import Input from "../ui/Input";
 import MenuItem from '@mui/material/MenuItem';
 
-const customInputColors = {
+export const customInputColors = {
     border: "#fff",
-    hoverBorder: "#2f67ff",
-    focusedBorder: "#2f67ff",
-    focusedLabel: "#2f67ff",
+    hoverBorder: "#ff6600",
+    focusedBorder: "#ff6600",
+    focusedLabel: "#ff6600",
     inputText: "#fff",
     helperText: "#fff"
 };
@@ -53,7 +53,7 @@ export default function CreateBookForm(){
     }
 
     return(
-        <form onSubmit={handleSubmit(onSubmit)} className="p-4 bg-[#1D1D21] mt-10 rounded-lg border-l-2 border-white flex flex-col gap-8">
+        <form onSubmit={handleSubmit(onSubmit)} className="p-4 bg-[#1D1D21] mt-10 rounded-lg border-l-2 border-primary-600 flex flex-col gap-8">
             <Input
                 label="Título"
                 {...register("title")}

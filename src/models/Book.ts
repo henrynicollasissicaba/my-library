@@ -18,9 +18,49 @@ export interface createBookParams {
     status: string
 }
 
-export async function getBooks(userId: string){
-    const books: Book[] = await prisma.book.findMany({ where: { userId } })
+export const BOOKS_PER_PAGE = 2
+
+export async function getBooks(currentPage: number){
+    const { userId } = await auth()
+    if(!userId) return
+
+    const books: Book[] = await prisma.book.findMany({
+        where: {
+            userId
+        },
+        take: BOOKS_PER_PAGE,
+        skip: (currentPage - 1) * BOOKS_PER_PAGE,
+        orderBy: {
+            updatedAt: 'asc'
+        }
+    })
+
     return books
+}
+
+export async function getAllBooks(){
+    const { userId } = await auth()
+    if(!userId) return
+
+    const allBooks = await prisma.book.findMany({ where: { userId } })
+    return allBooks
+}
+
+export async function getSearchedBooks(search: string){
+    const { userId } = await auth()
+    if(!userId) return
+
+    const searchedBooks: Book[] = await prisma.book.findMany({
+        where: {
+            userId,
+            title: { contains: search, mode: 'insensitive' }
+        },
+        orderBy: {
+            updatedAt: 'asc'
+        }
+    })
+
+    return searchedBooks
 }
 
 export async function createBook(params: createBookParams){
@@ -33,7 +73,7 @@ export async function createBook(params: createBookParams){
 }
 
 export async function getBookById(bookId: number){
-    const book = await prisma.book.findUnique({ where: { id: bookId } })
+    const book = await prisma.book.findUnique({ where: { id: bookId }})
     return book
 }
 
@@ -56,6 +96,14 @@ export async function finishLecture(bookId: number){
         where: { id: bookId },
         data: { status: 'Lido'}
     })
+}
+
+export async function totalBooks(){
+    const { userId } = await auth()
+    if(!userId) return
+
+    const total = await prisma.book.count({ where: { userId } })
+    return total
 }
 
 export async function deleteBook(bookId: number){

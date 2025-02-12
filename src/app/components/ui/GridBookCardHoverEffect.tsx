@@ -25,7 +25,7 @@ export const GridBookCardHoverEffect = ({
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2 mt-7 mb-5",
+        "grid grid-cols-1 md:grid-cols-2 mt-4 mb-5",
         className
       )}
     >

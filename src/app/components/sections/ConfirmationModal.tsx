@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import Input from '../ui/Input';
-import { getBook, updateBookAction } from '@/actions/book-actions';
+import { getBookAction, updateBookAction } from '@/actions/book-actions';
 import { booksCategory, updateBookSchema } from '@/schemas/bookSchema';
 import { MenuItem } from '@mui/material';
 import { ShinyButton } from '../ui/ShinyButton';
@@ -38,7 +38,7 @@ export default function ConfirmationModal({
     })
 
     useEffect(() => {
-        getBook(bookId).then((book) => {
+        getBookAction(bookId).then((book) => {
             if(book){
                 setTitle(book.title)
                 setAuthor(book.author)

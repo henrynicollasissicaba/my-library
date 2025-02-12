@@ -42,9 +42,29 @@ export async function createBookAction(formData: FormData){
     }
 }
 
-export async function getBook(bookId: number){
+export async function getBooksAction(currentPage: number){
+    const books = await Book.getBooks(currentPage)
+    return books
+}
+
+export async function getAllBooksAction(){
+    const allBooks = await Book.getAllBooks()
+    return allBooks    
+}
+
+export async function getBookAction(bookId: number){
     const book = await Book.getBookById(bookId)
     return book
+}
+
+export async function getSearchedBooksAction(search: string){
+    const searchedBooks = await Book.getSearchedBooks(search)
+    return searchedBooks
+}
+
+export async function getTotalBooksAction(){
+    const total = await Book.totalBooks()
+    return total
 }
 
 export async function updateBookAction(bookId: number, formData: FormData){
