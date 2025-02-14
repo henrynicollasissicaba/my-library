@@ -13,6 +13,7 @@ export default function ResetPasswordForm(){
     const [password, setPassword] = useState('')
     const [code, setCode] = useState('')
     const [successfulCreation, setSuccessfulCreation] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const router = useRouter()
     const { isSignedIn } = useAuth()
@@ -27,6 +28,7 @@ export default function ResetPasswordForm(){
     }
 
     const create = async (e: FormEvent<HTMLFormElement>) => {
+        setIsLoading(true)
         e.preventDefault()
         
         await signIn?.create({
@@ -38,10 +40,13 @@ export default function ResetPasswordForm(){
             if (isClerkAPIResponseError(error)){
                 toast.error(error.errors[0].longMessage)
             }
+        }).finally(() => {
+            setIsLoading(false)
         })
     }
 
     const reset = async (e: FormEvent<HTMLFormElement>) => {
+        setIsLoading(true)
         e.preventDefault()
 
         await signIn.attemptFirstFactor({
@@ -52,6 +57,8 @@ export default function ResetPasswordForm(){
             if(result.status === "complete") setActive({ session: result.createdSessionId })
         }).catch((error) => {
             if (isClerkAPIResponseError(error)) toast.error(error.errors[0].longMessage)
+        }).finally(() => {
+            setIsLoading(false)
         })
     }
 
@@ -69,7 +76,9 @@ export default function ResetPasswordForm(){
                         onChange={(e) => setEmail(e.target.value)}
                         autoComplete="off"
                     />
-                    <ShinyButton type="submit">Enviar código para redefinição de senha</ShinyButton>
+                    <ShinyButton type="submit" disabled={isLoading}>
+                        {isLoading ? "Enviando..." : "Enviar código para redefinição de senha"}
+                    </ShinyButton>
                 </>
              )}
             {successfulCreation && ( 
@@ -94,7 +103,9 @@ export default function ResetPasswordForm(){
                         onChange={(e) => setCode(e.target.value)}
                         autoComplete="off"
                     />
-                    <ShinyButton type="submit">Redefinir senha</ShinyButton>
+                    <ShinyButton type="submit">
+                        {isLoading ? "Redefinindo..." : "Redefinir senha"}
+                    </ShinyButton>
                 </>
              )}
         </form>

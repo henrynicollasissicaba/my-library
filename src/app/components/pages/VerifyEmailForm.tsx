@@ -10,11 +10,14 @@ import { isClerkAPIResponseError } from "@clerk/nextjs/errors"
 
 export default function VerifyEmailForm(){
     const [code, setCode] = useState("")
+    const [isLoadingVerifyingCode, setIsLoadingVerifyingCode] = useState(false)
+    const [isLoadingResendCode, setIsLoadingResendCode] = useState(false)
     const router = useRouter()
 
     const { isLoaded, signUp, setActive } = useSignUp()
 
     const handleCode = async (e: FormEvent<HTMLFormElement>) => {
+        setIsLoadingVerifyingCode(true)
         e.preventDefault()
 
         if(!isLoaded) return
@@ -38,10 +41,13 @@ export default function VerifyEmailForm(){
             if (isClerkAPIResponseError(error)){
                 toast.error(error.errors[0].message)
             }
+        } finally {
+            setIsLoadingVerifyingCode(false)
         }
     }
 
     const handleResendCode = async () => {
+        setIsLoadingResendCode(true)
         if(!isLoaded) return
 
         try {
@@ -53,6 +59,8 @@ export default function VerifyEmailForm(){
             if (isClerkAPIResponseError(error)){
                 toast.error(error.errors[0].message)
             }
+        } finally {
+            setIsLoadingResendCode(false)
         }
     }
 
@@ -69,8 +77,12 @@ export default function VerifyEmailForm(){
                 onChange={(e) => setCode(e.target.value)}
             />
             <div className="flex justify-between gap-2 flex-wrap">
-                <ShinyButton type="button" onClick={handleResendCode} className="w-full sm:w-auto">Reenviar código</ShinyButton>
-                <ShinyButton type="submit" className="w-full sm:w-auto">Verificar</ShinyButton>
+                <ShinyButton type="button" onClick={handleResendCode} className="w-full sm:w-auto">
+                    {isLoadingResendCode ? "Reenviando..." : "Reenviar código"}
+                </ShinyButton>
+                <ShinyButton type="submit" className="w-full sm:w-auto">
+                    {isLoadingVerifyingCode ? "Verificando..." : "Verificar"}
+                </ShinyButton>
             </div>
         </form>
     )

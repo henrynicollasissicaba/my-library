@@ -11,11 +11,14 @@ import { toast } from "sonner";
 export default function LoginForm(){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+
     const router = useRouter()
 
     const { isLoaded, signIn, setActive } = useSignIn()
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        setIsLoading(true)
         e.preventDefault()
 
         if(!isLoaded) return
@@ -37,6 +40,8 @@ export default function LoginForm(){
             if (isClerkAPIResponseError(error)){
                 toast.error(error.errors[0].message)
             }
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -64,7 +69,9 @@ export default function LoginForm(){
                     Esqueci minha senha
                 </a>
             </div>
-            <ShinyButton typeof="submit">Entrar</ShinyButton>
+            <ShinyButton typeof="submit" disabled={isLoading}>
+                {isLoading ? "Entrando..." : "Entrar"}
+            </ShinyButton>
             <a href="/register" className="text-sm hover:text-primary-500 transition-colors p-1 text-center">
                 Não possui conta? Clique aqui para criar
             </a>

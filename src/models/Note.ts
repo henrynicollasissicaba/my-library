@@ -1,4 +1,5 @@
 import { prisma } from "@/database/prisma-client";
+import { auth } from "@clerk/nextjs/server";
 
 export interface Note {
     id: number
@@ -55,6 +56,21 @@ export async function getNotes(bookId: number, currentPage: number){
 export async function getNote(noteId: number){
     const note = await prisma.note.findUnique({ where: { id: noteId } })
     return note
+}
+
+export async function getTotalNotes(){
+    const { userId } = await auth()
+    if(!userId) return
+
+    const total = await prisma.note.count({
+        where: {
+            book: {
+                userId
+            }
+        }
+    })
+
+    return total
 }
 
 export async function getTotalNotesByBook(bookId: number){

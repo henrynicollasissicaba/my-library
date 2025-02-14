@@ -31,20 +31,22 @@ interface ShinyButtonProps
   children: React.ReactNode;
   className?: string;
   type?: "button" | "submit"
+  disabled?: boolean
 }
 
 export const ShinyButton = React.forwardRef<
   HTMLButtonElement,
   ShinyButtonProps
->(({ children, className, type, ...props }, ref) => {
+>(({ children, className, type, disabled, ...props }, ref) => {
   return (
     <motion.button
       ref={ref}
       className={cn(
-        "relative rounded-lg px-6 py-2 font-medium backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)]",
+        "disabled:cursor-not-allowed relative rounded-lg px-6 py-2 font-medium backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/10%)_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_hsl(var(--primary)/10%)]",
         className,
       )}
       type={type}
+      disabled={disabled}
       {...animationProps}
       {...props}
     >

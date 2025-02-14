@@ -72,6 +72,11 @@ export async function getNoteAction(noteId: number){
     return note
 }
 
+export async function getTotalNotesAction(){
+    const total = await Note.getTotalNotes()
+    return total
+}
+
 export async function getTotalNotesByBookAction(bookId: number){
     const total = await Note.getTotalNotesByBook(bookId)
     return total

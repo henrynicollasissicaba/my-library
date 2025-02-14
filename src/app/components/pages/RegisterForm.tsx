@@ -14,11 +14,13 @@ export default function RegisterForm(){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [verifying, setVerifying] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const router = useRouter()
 
     const { isLoaded, signUp } = useSignUp()
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+        setIsLoading(true)
         e.preventDefault()
 
         if(!isLoaded) return
@@ -41,6 +43,8 @@ export default function RegisterForm(){
             if(isClerkAPIResponseError(error)){
                 toast.error(error.errors[0].longMessage)
             }
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -89,7 +93,9 @@ export default function RegisterForm(){
                 onChange={(e) => setPassword(e.target.value)}
             />
             <div id="clerk-captcha"></div>
-            <ShinyButton className="mt-2" typeof="submit">Cadastrar</ShinyButton>
+            <ShinyButton className="mt-2" typeof="submit" disabled={isLoading}>
+                {isLoading ? "Cadastrando..." : "Cadastrar"}
+            </ShinyButton>
             <a href="/login" className="text-sm hover:text-primary-500 transition-colors p-1 text-center">
                 Já possui uma conta? Clique aqui para entrar
             </a>
