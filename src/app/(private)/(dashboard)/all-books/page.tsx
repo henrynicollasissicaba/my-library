@@ -13,7 +13,7 @@ export default async function AllBooksPage({ searchParams }: { searchParams: Pro
     const totalPages = totalBooks ? Math.ceil(totalBooks / Book.BOOKS_PER_PAGE) : 0
 
     return(
-        <main className="flex flex-col x-full min-h-dvh">
+        <main className="flex flex-col">
             <Heading title="Livros" highlightWord="cadastrados"/>
             {books && books.length > 0 ? (
                 <BookList initialBooks={books} currentPage={currentPage} totalPages={totalPages} booksPerPage={Book.BOOKS_PER_PAGE}/>

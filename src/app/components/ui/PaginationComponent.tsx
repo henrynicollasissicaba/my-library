@@ -36,10 +36,14 @@ export default function PaginationComponent({ currentPage, totalPages }: Paginat
                         '&.MuiPaginationItem-colorPrimary': {
                             color: '#fff',
                             borderColor: "#888888"
+                            
                         },
                         '&.Mui-selected': {
                             borderColor: "#ff5900",
                             color: "#ff5900",
+                            backgroundColor: "transparent"
+                        },
+                        '&.MuiPaginationItem-colorPrimary:hover': {
                             backgroundColor: "transparent"
                         }
                     }}

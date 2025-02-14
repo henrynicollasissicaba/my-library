@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "@/app/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
+import Footer from "../components/layout/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,7 +27,10 @@ export default function RootLayout({
           className={`${poppins.className} antialiased`}
         >
           <Toaster richColors/>
-          {children}
+          <div className="min-h-screen flex flex-col bg-slate-50">
+            {children}
+            <Footer />
+          </div>
         </body>
       </html>
     </ClerkProvider>

@@ -54,7 +54,7 @@ export default function CreateBookForm(){
     }
 
     return(
-        <form onSubmit={handleSubmit(onSubmit)} className="p-4 bg-[#1D1D21] mt-10 rounded-lg border-l-2 border-primary-600 flex flex-col gap-8">
+        <form onSubmit={handleSubmit(onSubmit)} className="p-4 bg-[#1D1D21] mt-10 rounded-lg border-l-2 border-primary-600 flex flex-col gap-8 mb-5">
             <Input
                 label="Título"
                 {...register("title")}

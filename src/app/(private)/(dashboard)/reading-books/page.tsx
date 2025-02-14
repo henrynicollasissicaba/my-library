@@ -16,7 +16,7 @@ export default async function ReadingBooksPage({ searchParams }: { searchParams:
     const totalPages = totalBooks ? Math.ceil(totalBooks / BOOKS_PER_PAGE) : 0
 
     return(
-        <main className="flex flex-col min-h-dvh">
+        <main className="flex flex-col">
             <Heading title="Livros em" highlightWord="leitura"/>
             {readingBooks && readingBooks.length > 0 ? (
                 <>

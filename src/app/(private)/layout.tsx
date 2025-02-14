@@ -4,6 +4,7 @@ import "@/app/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
 import SideBar from "@/app/components/layout/SideBar";
+import Footer from "../components/layout/Footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({
             </div>
             <div className="flex flex-col bg-neutral-800 min-h-screen w-full max-w-6xl mx-auto px-2">
               {children}
+              <Footer />
             </div>
           </div>
         </body>

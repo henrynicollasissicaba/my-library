@@ -16,7 +16,7 @@ export default async function NonBooksRead({ searchParams }: { searchParams: Pro
     const totalPages = totalBooks ? Math.ceil(totalBooks / BOOKS_PER_PAGE) : 0
 
     return(
-        <main className="flex flex-col min-h-dvh">
+        <main className="flex flex-col">
             <Heading title="Livros" highlightWord="não lidos"/>
             {nonReadBooks && nonReadBooks.length > 0 ? (
                 <>
