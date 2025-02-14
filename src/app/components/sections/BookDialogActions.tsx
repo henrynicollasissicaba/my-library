@@ -38,7 +38,7 @@ export default function BookDialogActions(params: BookDialogActionsProps){
                 onClick={() => setOpenUpdateBookFormDialog(!openUpdateBookFormDialog)}
             >
                 <EditIcon fontSize="small"/>
-                Editar
+                <span>Editar</span>
             </button>
 
             <button 
@@ -70,7 +70,7 @@ export default function BookDialogActions(params: BookDialogActionsProps){
                     onClick={() => params.onFinishLecture?.(params.bookId)}
                 >
                     <CheckCircleIcon fontSize="small"/>
-                    <span></span>
+                    <span>Finalizar leitura</span>
                 </button>
             )}
 

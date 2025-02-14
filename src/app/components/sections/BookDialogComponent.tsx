@@ -5,56 +5,80 @@ import { useState } from 'react';
 import BookDialogActions from './BookDialogActions';
 import { deleteBookAction, finishLectureAction, startLectureAction } from '@/actions/book-actions';
 import { toast } from 'sonner';
+import { showCustomAlert } from '../lib/sweetAlert';
 
 export default function BookDialogComponent({ bookId, bookStatus }: { bookId: number, bookStatus: string }){
     const [openDialog, setOpenDialog] = useState(false)
     const [isDeleting, setIsDeleting] = useState(false)
 
+    let title, confirmButtonText
+
     const handleDelete = async (bookId: number) => {
-        setIsDeleting(true)
+        title = "Deseja excluir esse livro?"
+        confirmButtonText = "Excluir"
 
-        try {
-            toast.promise(deleteBookAction((bookId)), {
-                loading: "Excluindo livro...",
-                success: "Livro excluído com sucesso!"
-            })
+        const result = await showCustomAlert({ title, confirmButtonText})
 
-            setOpenDialog(false)
+        if(result){
+            setIsDeleting(true)
 
-        } catch (error) {
-            toast.error("Algo deu errado ao excluir o livro. Tente novamente!")
-        } finally {
-            setIsDeleting(false)
+            try {
+                toast.promise(deleteBookAction((bookId)), {
+                    loading: "Excluindo livro...",
+                    success: "Livro excluído com sucesso!"
+                })
+
+                setOpenDialog(false)
+
+            } catch (error) {
+                toast.error("Algo deu errado ao excluir o livro. Tente novamente!")
+            } finally {
+                setIsDeleting(false)
+            }
         }
     }
 
     const handleStartLecture = async (bookId: number) => {
-        try {
-            toast.promise(startLectureAction(bookId), {
-                loading: "Iniciando leitura do livro...",
-                success: "Você iniciou a leitura do livro com sucesso!"
-            })
+        title = "Deseja iniciar a leitura desse livro?"
+        confirmButtonText = "Iniciar leitura"
 
-        } catch (error) {
-            toast.error("Algo deu errado ao iniciar a leitura. Tente novamente!")
+        const result = await showCustomAlert({ title, confirmButtonText })
 
-        } finally {
-            setOpenDialog(false)
+        if(result){
+            try {
+                toast.promise(startLectureAction(bookId), {
+                    loading: "Iniciando leitura do livro...",
+                    success: "Você iniciou a leitura do livro com sucesso!"
+                })
+    
+            } catch (error) {
+                toast.error("Algo deu errado ao iniciar a leitura. Tente novamente!")
+    
+            } finally {
+                setOpenDialog(false)
+            }
         }
     }
 
     const handleFinishLecture = async (bookId: number) => {
-        try {
-            toast.promise(finishLectureAction(bookId), {
-                loading: "Finalizando leitura do livro...",
-                success: "Livro marcado como lido com sucesso!"
-            })
+        title = "Deseja finalizar a leitura desse livro?"
+        confirmButtonText = "Finalizar leitura"
 
-        } catch (error) {
-            toast.error("Algo deu errado ao marcar como lido. Tente novamente!")
+        const result = await showCustomAlert({ title, confirmButtonText })
 
-        } finally {
-            setOpenDialog(false)
+        if(result){
+            try {
+                toast.promise(finishLectureAction(bookId), {
+                    loading: "Finalizando leitura do livro...",
+                    success: "Livro marcado como lido com sucesso!"
+                })
+    
+            } catch (error) {
+                toast.error("Algo deu errado ao marcar como lido. Tente novamente!")
+    
+            } finally {
+                setOpenDialog(false)
+            }
         }
     }
 

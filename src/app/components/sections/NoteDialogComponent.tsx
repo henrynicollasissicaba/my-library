@@ -5,24 +5,34 @@ import { useState } from 'react';
 import NoteDialogActions from './NoteDialogActions';
 import { toast } from 'sonner';
 import { deleteNoteAction } from '@/actions/note-actions';
+import { showCustomAlert } from '../lib/sweetAlert';
 
 export default function NoteDialogComponent({ noteId }: { noteId: number }){
     const [openDialog, setOpenDialog] = useState(false)
     const [isDeleting, setIsDeleting] = useState(false)
 
-    const handleDelete = async (noteId: number) => {
-        setIsDeleting(true)
-        try {
-            toast.promise(deleteNoteAction(noteId), {
-                loading: "Excluindo anotação...",
-                success: "Anotação excluída com sucesso!"
-            })
+    let title, confirmButtonText
 
-        } catch (error) {
-            toast.error("Algo deu errado ao excluir a anotação. Tente novamente!")
-        } finally {
-            setIsDeleting(false)
-            setOpenDialog(false)
+    const handleDelete = async (noteId: number) => {
+        title = "Deseja excluir essa anotação?"
+        confirmButtonText = "Excluir"
+
+        const result = await showCustomAlert({ title, confirmButtonText })
+
+        if(result){
+            setIsDeleting(true)
+            try {
+                toast.promise(deleteNoteAction(noteId), {
+                    loading: "Excluindo anotação...",
+                    success: "Anotação excluída com sucesso!"
+                })
+
+            } catch (error) {
+                toast.error("Algo deu errado ao excluir a anotação. Tente novamente!")
+            } finally {
+                setIsDeleting(false)
+                setOpenDialog(false)
+            }
         }
     }
 

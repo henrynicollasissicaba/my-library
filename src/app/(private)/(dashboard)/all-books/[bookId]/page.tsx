@@ -39,9 +39,9 @@ export default async function BookPage(
                     </div>
                 </>
             ) : (
-                <span className="text-sm italic text-zinc-400 mt-4 ml-3">
-                    Nenhuma anotação do livro "{book.title}" foi encontrado.
-                </span>
+                <p className="text-sm italic text-zinc-400 mt-4 ml-3">
+                    Nenhuma anotação do livro: <span className="font-bold">"{book.title}"</span> foi encontrado
+                </p>
             )}
         </main>
     )
