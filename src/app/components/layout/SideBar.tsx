@@ -58,9 +58,9 @@ export default function SideBar(){
                         ))}
                     </ul>
                 </nav>
-                {/* <div className="block ml-auto">
+                <div className="block ml-auto">
                     <ClerkUserButton />
-                </div> */}
+                </div>
             </aside>
             <button 
                 className={`absolute top-2 right-2 lg:hidden z-50`} 

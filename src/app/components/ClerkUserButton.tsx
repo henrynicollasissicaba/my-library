@@ -1,15 +1,18 @@
-import { UserButton } from "@clerk/nextjs";
+'use client'
 
-export default function ClerkUserButton() {
+import { useClerk } from '@clerk/nextjs'
+import LogoutIcon from '@mui/icons-material/Logout';
+
+export default function SignOutButton(){
+  const { signOut } = useClerk()
+
   return (
-    <UserButton
-      appearance={{
-        elements: {
-          userButtonAvatarBox: { width: "2.5rem", height: "2.5rem" },
-          userButtonOuterIdentifier: { color: "white" },
-        },
-      }}
-      showName
-    />
-  );
+    <button 
+      onClick={() => signOut({ redirectUrl: '/login' })}
+      className="flex gap-2 items-center hover:text-primary-600 transition-colors"
+    >
+      Sair
+      <LogoutIcon fontSize="small"/>
+    </button>
+  )
 }
