@@ -1,20 +1,19 @@
-'use client'
+"use client"
 
-import { cn } from "@/app/components/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
+import { Note } from "@/models/Note";
+import { cn } from "../lib/utils";
 import { useState } from "react";
-import clsx from "clsx";
-import BookCardItem from "./BookCardItem";
-import { Book } from "@/models/Book";
+import { AnimatePresence, motion } from "motion/react";
+import NoteCardItem from "./NoteCardItem";
 
-export const GridBookCardHoverEffect = ({
-  books,
-  className,
+export default function NotesCardHoverEffect({
+    notes,
+    className
 }: {
-  books: Book[];
-  className?: string;
-}) => {
-  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+    notes: Note[]
+    className?: string
+}){
+    let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <div
@@ -23,7 +22,7 @@ export const GridBookCardHoverEffect = ({
         className
       )}
     >
-      {books.map((book, idx) => (
+      {notes.map((note, idx) => (
         <div
           key={idx}
           className="relative group block p-2 h-full w-full"
@@ -50,36 +49,34 @@ export const GridBookCardHoverEffect = ({
               />
             )}
           </AnimatePresence>
-          <Card className={clsx("relative",
-              book.status === "Não lido" && "border-red-600",
-              book.status === "Lendo" && "border-blue-500",
-              book.status === "Lido" && "border-green-500"
-            )}>
-            <BookCardItem book={book} />
+          <Card className="">
+            <NoteCardItem note={note} />
           </Card>
         </div>
       ))}
     </div>
   );
-};
+}
 
 export const Card = ({
-  className,
-  children
+    className,
+    children
 }: {
-  className?: string;
-  children: React.ReactNode;
+    className?: string;
+    children: React.ReactNode;
 }) => {
-  return (
-    <div
-      className={cn(
-        "rounded-2xl h-full w-full px-2 py-4 overflow-hidden bg-neutral-300 border-l-2 relative z-20 transition-all",
-        className
-      )}
-    >
-      <div className="relative z-50">
-        <div className="p-2">{children}</div>
-      </div>
-    </div>
-  );
+    return (
+        <div
+            className={cn(
+                "rounded-2xl h-full w-full px-2 py-4 bg-neutral-300 border-l-2 border-primary-600 relative z-20 transition-all",
+                className
+            )}
+        >
+            <div className="relative z-50">
+                <div className="p-2">{children}</div>
+            </div>
+        </div>
+);
 }
+
+  

@@ -15,10 +15,10 @@ export default function BookDialogComponent({ bookId, bookStatus }: { bookId: nu
 
         try {
             toast.promise(deleteBookAction((bookId)), {
-                loading: "Excluindo livro..."
+                loading: "Excluindo livro...",
+                success: "Livro excluído com sucesso!"
             })
 
-            toast.success("Livro excluído com sucesso!")
             setOpenDialog(false)
 
         } catch (error) {
@@ -31,13 +31,13 @@ export default function BookDialogComponent({ bookId, bookStatus }: { bookId: nu
     const handleStartLecture = async (bookId: number) => {
         try {
             toast.promise(startLectureAction(bookId), {
-                loading: "Iniciando leitura do livro..."
+                loading: "Iniciando leitura do livro...",
+                success: "Você iniciou a leitura do livro com sucesso!"
             })
-
-            toast.success("Você iniciou a leitura do livro com sucesso!")
 
         } catch (error) {
             toast.error("Algo deu errado ao iniciar a leitura. Tente novamente!")
+
         } finally {
             setOpenDialog(false)
         }
@@ -46,12 +46,13 @@ export default function BookDialogComponent({ bookId, bookStatus }: { bookId: nu
     const handleFinishLecture = async (bookId: number) => {
         try {
             toast.promise(finishLectureAction(bookId), {
-                loading: "Finalizando leitura do livro..."
+                loading: "Finalizando leitura do livro...",
+                success: "Livro marcado como lido com sucesso!"
             })
 
-            toast.success("Livro marcado como lido com sucesso!")
         } catch (error) {
             toast.error("Algo deu errado ao marcar como lido. Tente novamente!")
+
         } finally {
             setOpenDialog(false)
         }

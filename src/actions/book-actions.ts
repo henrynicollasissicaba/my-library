@@ -19,6 +19,8 @@ export async function createBookAction(formData: FormData){
         // Criação do livro
         await Book.createBook(validatedData);
 
+        revalidatePath('/all-books')
+
         // Retorno de sucesso
         return { success: true };
 

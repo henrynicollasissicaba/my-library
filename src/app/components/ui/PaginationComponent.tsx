@@ -10,7 +10,7 @@ interface PaginationProps {
     totalPages: number
 }
 
-export default function BookPagination({ currentPage, totalPages }: PaginationProps){
+export default function PaginationComponent({ currentPage, totalPages }: PaginationProps){
     const pathname = usePathname()
     const searchParams = useSearchParams()
 

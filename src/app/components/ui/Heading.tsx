@@ -1,10 +1,9 @@
-export default function Heading({ title, highlightWord, className }: {
+export default function Heading({ title, highlightWord }: {
     title: string,
-    highlightWord: string,
-    className?: string
+    highlightWord: string
 }){
     return(
-        <h1 className={`font-bold text-2xl ${!className ? "mt-3 ml-3" : "mt-0 ml-0"}`}
+        <h1 className="text-2xl font-bold mt-4 ml-3 mr-12"
         >
             {title} <span className="text-primary-500">{highlightWord}</span>
         </h1>

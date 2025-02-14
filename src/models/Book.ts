@@ -38,7 +38,7 @@ export async function getBooks(currentPage: number, bookStatus?: string){
         take: BOOKS_PER_PAGE,
         skip: (currentPage - 1) * BOOKS_PER_PAGE,
         orderBy: {
-            updatedAt: 'asc'
+            title: 'asc'
         }
     })
 

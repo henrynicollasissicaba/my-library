@@ -23,7 +23,7 @@ export const customInputColors = {
 type CreateBookFormData = z.infer<typeof createBookSchema>
 
 export default function CreateBookForm(){
-    const { register, handleSubmit, formState: { errors } } = useForm<CreateBookFormData>({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<CreateBookFormData>({
         resolver: zodResolver(createBookSchema)
     })
 
@@ -42,13 +42,14 @@ export default function CreateBookForm(){
                 formData.append(key, value.toString())
             })
 
-            toast.promise(createBookAction((formData)), {
-                loading: "Cadastrando livro..."
+            toast.promise(createBookAction(formData), {
+                loading: "Cadastrando livro...",
+                success: "Livro cadastrado com sucesso!"
             })
 
-            toast.success("Livro cadastrado com sucesso!")
+            reset()
         } catch (error) {
-            toast.error("Erro ao cadastrar um livro")
+            toast.error("Erro ao cadastrar um livro!")
         }
     }
 

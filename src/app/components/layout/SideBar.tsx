@@ -12,7 +12,6 @@ import ModelTrainingIcon from '@mui/icons-material/ModelTraining';
 
 import { useEffect, useState } from "react";
 import { usePathname } from 'next/navigation';
-import Heading from '@/app/components/ui/Heading';
 import ClerkUserButton from '@/app/components/ClerkUserButton';
 
 
@@ -44,13 +43,13 @@ export default function SideBar(){
         <>
             <aside 
                 className={`bg-neutral-300 min-h-screen fixed w-[17rem] p-4 flex flex-col justify-between z-50
-                    md:translate-x-0 transition-transform ${isSidebarOpen ? "translate-x-0" : "translate-x-[-17rem]"}
+                    lg:translate-x-0 transition-transform ${isSidebarOpen ? "translate-x-0" : "translate-x-[-17rem]"}
                     shadow-md`}
                 >
                 <nav className="flex flex-col gap-10">
                     <div className="flex items-center gap-2">
-                        <AutoStoriesIcon />
-                        <Heading title="My" highlightWord="Library" className="mt-0 ml-0"/>
+                        <AutoStoriesIcon className="text-primary-600"/>
+                        <h1 className="text-2xl font-bold">My <span className="text-primary-600">Library</span></h1>
                     </div>
 
                     <ul className="flex flex-col gap-2">
@@ -59,12 +58,12 @@ export default function SideBar(){
                         ))}
                     </ul>
                 </nav>
-                <div className="block ml-auto">
+                {/* <div className="block ml-auto">
                     <ClerkUserButton />
-                </div>
+                </div> */}
             </aside>
             <button 
-                className={`absolute top-2 right-2 md:hidden z-50`} 
+                className={`absolute top-2 right-2 lg:hidden z-50`} 
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
                 {isSidebarOpen ? <HighlightOffIcon fontSize="large" /> : <MenuIcon fontSize="large" />}

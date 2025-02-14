@@ -8,7 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { useState } from "react";
-import ConfirmationModal from "./ConfirmationModal";
+import ConfirmationModal from "./ConfirmationBookModal";
 
 interface BookDialogActionsProps {
     bookId: number
@@ -49,7 +49,7 @@ export default function BookDialogActions(params: BookDialogActionsProps){
                 disabled={params.isDeleting}
             >
                 <DeleteIcon fontSize="small"/>
-                {params.isDeleting ? "Excluindo" : "Excluir"}
+                <span>Excluir</span>
             </button>
 
             {params.bookStatus === "Não lido" && (
@@ -59,7 +59,7 @@ export default function BookDialogActions(params: BookDialogActionsProps){
                     onClick={() => params.onStartLecture?.(params.bookId)}
                 >
                     <PlayArrowIcon fontSize="small"/>
-                    Iniciar leitura
+                    <span>Iniciar leitura</span>
                 </button>
             )}
             
@@ -70,7 +70,7 @@ export default function BookDialogActions(params: BookDialogActionsProps){
                     onClick={() => params.onFinishLecture?.(params.bookId)}
                 >
                     <CheckCircleIcon fontSize="small"/>
-                    Finalizar leitura
+                    <span></span>
                 </button>
             )}
 

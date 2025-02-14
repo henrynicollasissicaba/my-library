@@ -13,7 +13,7 @@ import { MenuItem } from '@mui/material';
 import { ShinyButton } from '../ui/ShinyButton';
 import { toast } from "sonner";
 
-interface ConfirmationModalProps {
+interface ConfirmationBookModalProps {
   open: boolean;
   onClose: () => void;
   onCloseModal: () => void
@@ -22,12 +22,12 @@ interface ConfirmationModalProps {
 
 type UpdateBookFormData = z.infer<typeof updateBookSchema>
 
-export default function ConfirmationModal({
+export default function ConfirmationBookModal({
   open,
   onClose,
   onCloseModal,
   bookId
-}: ConfirmationModalProps) {
+}: ConfirmationBookModalProps) {
     const [title, setTitle] = useState("")
     const [author, setAuthor] = useState("")
     const [numberOfPages, setNumberOfPages] = useState(0)
@@ -64,10 +64,10 @@ export default function ConfirmationModal({
             })
 
             toast.promise(updateBookAction(bookId, formData), {
-                loading: "Atualizando livro..."
+                loading: "Atualizando livro...",
+                success: "Livro atualizado com sucesso!"
             })
 
-            toast.success("Livro atualizado com sucesso!")
         } catch (error) {
             toast.error("Erro ao atualizar um livro")
         } finally {

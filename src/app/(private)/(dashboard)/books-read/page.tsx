@@ -1,5 +1,5 @@
 import { getBooksAction, getTotalBooksAction } from "@/actions/book-actions";
-import BookPagination from "@/app/components/ui/BookPagination";
+import BookPagination from "@/app/components/ui/PaginationComponent";
 import { GridBookCardHoverEffect } from "@/app/components/ui/GridBookCardHoverEffect";
 import Heading from "@/app/components/ui/Heading";
 import { BOOK_STATUS, BOOKS_PER_PAGE } from "@/models/Book";

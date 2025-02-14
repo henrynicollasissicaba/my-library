@@ -27,6 +27,7 @@ export const updateBookSchema = z.object({
     number_of_pages: z.string()
                     .min(1, "O * NÚMERO DE PÁGINAS * é obrigatório")
                     .transform((val) => Number(val))
-                    .refine((val) => val > 0 && val < 4000, "O * NÚMERO DE PÁGINAS * deve estar entre 1 e 4000").optional(),
+                    .refine((val) => val > 0 && val < 4000, "O * NÚMERO DE PÁGINAS * deve estar entre 1 e 4000")
+                    .optional(),
     category: z.enum(booksCategory).optional()
 })

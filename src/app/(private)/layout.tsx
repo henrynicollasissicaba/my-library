@@ -27,7 +27,7 @@ export default function RootLayout({
           className={`${poppins.className} antialiased`}
         >
           <Toaster richColors/>
-          <div className="grid md:grid-cols-[17rem_1fr] text-[#F4F4F5]">
+          <div className="grid lg:grid-cols-[17rem_1fr] text-[#F4F4F5]">
             <div>
               <SideBar />
             </div>

@@ -4,7 +4,7 @@ import { Book } from "@/models/Book"
 import React, { useEffect, useState } from "react"
 import SearchBar from "./SearchBar"
 import { GridBookCardHoverEffect } from "../ui/GridBookCardHoverEffect"
-import BookPagination from "../ui/BookPagination"
+import BookPagination from "../ui/PaginationComponent"
 import { getAllBooksAction } from "@/actions/book-actions"
 interface BookListProps {
     initialBooks: Book[]
