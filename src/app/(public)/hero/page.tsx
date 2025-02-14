@@ -1,4 +1,3 @@
-import { ShinyButton } from "@/app/components/ui/ShinyButton";
 import Image from "next/image";
 
 export default function Hero(){
