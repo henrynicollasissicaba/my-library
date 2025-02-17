@@ -25,14 +25,14 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="pt-BR">
         <body
-          className={`${poppins.className} antialiased`}
+          className={`${poppins.className} antialiased bg-neutral-800`}
         >
           <Toaster richColors/>
           <div className="grid lg:grid-cols-[17rem_1fr] text-[#F4F4F5]">
             <div>
               <SideBar />
             </div>
-            <div className="flex flex-col bg-neutral-800 min-h-screen w-full max-w-6xl mx-auto px-2">
+            <div className="flex flex-col min-h-screen w-full max-w-6xl mx-auto px-2">
               {children}
               <Footer />
             </div>

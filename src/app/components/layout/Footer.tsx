@@ -1,6 +1,6 @@
 export default function Footer(){
     return(
-        <p className="text-[.625rem] text-primary-600 text-center mt-auto mb-2 font-bold tracking-wide">
+        <p className="text-[.625rem] text-primary-600 text-center mt-auto mb-2 font-bold tracking-wide bg-transparent">
             &copy; {new Date().getFullYear()} My Library | Desenvolvido por 
             <a 
                 href="https://www.linkedin.com/in/henry-nicollas-issicaba-neves-05a54024a/" 
