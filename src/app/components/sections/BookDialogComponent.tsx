@@ -6,6 +6,7 @@ import BookDialogActions from './BookDialogActions';
 import { deleteBookAction, finishLectureAction, startLectureAction } from '@/actions/book-actions';
 import { toast } from 'sonner';
 import { showCustomAlert } from '../lib/sweetAlert';
+import { getTotalNotesByBookAction } from '@/actions/note-actions';
 
 export default function BookDialogComponent({ bookId, bookStatus }: { bookId: number, bookStatus: string }){
     const [openDialog, setOpenDialog] = useState(false)
@@ -14,10 +15,19 @@ export default function BookDialogComponent({ bookId, bookStatus }: { bookId: nu
     let title, confirmButtonText
 
     const handleDelete = async (bookId: number) => {
+        let result
         title = "Deseja excluir esse livro?"
         confirmButtonText = "Excluir"
 
-        const result = await showCustomAlert({ title, confirmButtonText})
+        const totalNotes = await getTotalNotesByBookAction(bookId)
+
+        if(totalNotes > 0){
+            let otherText = `Ao excluir esse livro, estará excluindo ${totalNotes} anotações. Essa é uma ação irreversível!`
+            result = await showCustomAlert({ title, confirmButtonText, otherText })
+        } else {
+            result = await showCustomAlert({ title, confirmButtonText })
+        }
+
 
         if(result){
             setIsDeleting(true)

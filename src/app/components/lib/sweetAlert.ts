@@ -3,12 +3,13 @@ import Swal from 'sweetalert2'
 interface CustomAlertProps {
     title: string
     confirmButtonText: string
+    otherText?: string
 }
 
 export const showCustomAlert = async (params: CustomAlertProps) => {
     const result = await Swal.fire({
         title: `${params.title}`,
-        text: "Essa é uma ação irreversível!",
+        text: `${params.otherText || "Essa é uma ação irreversível!"}`,
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#3085d6",
