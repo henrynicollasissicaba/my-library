@@ -35,7 +35,7 @@ export default function RootLayout({
             <div>
               <SideBar />
             </div>
-            <div className="flex flex-col min-h-screen w-full max-w-6xl mx-auto px-2">
+            <div className="flex flex-col min-h-screen w-full max-w-6xl mx-auto p-3">
               {children}
               <Footer />
             </div>

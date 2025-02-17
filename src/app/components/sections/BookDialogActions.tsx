@@ -26,7 +26,11 @@ export default function BookDialogActions(params: BookDialogActionsProps){
     return(
         <div className="absolute top-2 right-7 p-1 bg-neutral-200 grid grid-cols-2 gap-1 z-10 w-52 text-sm">
             {(params.bookStatus === "Lendo" || params.bookStatus === "Lido") && (
-                <Link href={`/all-books/${params.bookId}`} className="col-span-2 bg-neutral-300 justify-center py-3 flex items-center gap-2 hover:text-blue-500 transition-colors">
+                <Link 
+                    href={`/all-books/${params.bookId}`}
+                    scroll={false}
+                    className="col-span-2 bg-neutral-300 justify-center py-3 flex items-center gap-2 hover:text-blue-500 transition-colors"
+                >
                     <TextSnippetIcon fontSize="small"/>
                     <span>Anotações</span>
                 </Link>

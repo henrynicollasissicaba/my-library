@@ -34,6 +34,7 @@ export default async function BookPage(
             <Heading title="Anotações do livro: " highlightWord={book?.title}/>
             <Link 
                 href="/all-books"
+                scroll={false}
                 className="px-4 py-2 flex items-center bg-primary-600 text-white gap-2 font-bold max-w-fit rounded-md"
             >
                 <ArrowBackIcon />

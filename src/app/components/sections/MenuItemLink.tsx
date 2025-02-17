@@ -15,6 +15,7 @@ export default function MenuItemLink({ path, label, icon }: {
     return(
         <Link 
             href={path} 
+            scroll={false}
             className={`px-4 py-2 hover:bg-neutral-200 hover:text-primary-400 rounded-md transition-colors
             ${isActive ? "bg-[#2a2a2f] text-primary-400" : ""} flex items-center justify-start gap-5`}
         >

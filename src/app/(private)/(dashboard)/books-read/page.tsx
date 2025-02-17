@@ -26,7 +26,7 @@ export default async function BooksReadPage({ searchParams }: { searchParams: Pr
                     </div>
                 </>
             ) : (
-                <span className="text-sm italic text-zinc-400 mt-4 ml-3">
+                <span className="text-sm italic text-zinc-400 mt-4">
                     Não foram encontrados livros que você já leu.
                 </span>
             )}

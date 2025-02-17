@@ -10,7 +10,7 @@ interface SearchBarProps {
 
 export default function SearchBar({ onChange }: SearchBarProps){
     return(
-        <div className="mt-4 px-3">
+        <div className="mt-7">
             <Input 
                 label="Buscar livro por título ou autor"
                 fullWidth

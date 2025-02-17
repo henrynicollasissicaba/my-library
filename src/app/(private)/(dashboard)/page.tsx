@@ -47,7 +47,7 @@ export default async function Home() {
     <main className="flex flex-col gap-10">
       <div>
         <h1 
-          className="font-bold text-3xl mt-4 ml-3 mr-10"
+          className="font-bold text-3xl mt-2 ml-3 mr-10"
         >
           Início - Painel de: <span className="text-primary-500">{user?.firstName} {user?.lastName}</span>
         </h1>

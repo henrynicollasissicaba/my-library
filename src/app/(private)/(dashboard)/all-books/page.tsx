@@ -18,7 +18,7 @@ export default async function AllBooksPage({ searchParams }: { searchParams: Pro
             {books && books.length > 0 ? (
                 <BookList initialBooks={books} currentPage={currentPage} totalPages={totalPages} booksPerPage={Book.BOOKS_PER_PAGE}/>
             ) : (
-                <span className="text-sm italic text-zinc-400 mt-4 ml-3">
+                <span className="text-sm italic text-zinc-400 mt-4">
                     Não foram encontrados livros cadastrados.
                 </span>
             )}
