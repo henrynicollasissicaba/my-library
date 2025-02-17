@@ -7,6 +7,7 @@ import { FormEvent, useState } from "react"
 import { toast } from "sonner"
 import Input from "@/app/components/ui/Input"
 import { ShinyButton } from "@/app/components/ui/ShinyButton"
+import LoadingSpinner from "../layout/LoadingSpinner"
 
 export default function ResetPasswordForm(){
     const [email, setEmail] = useState('')
@@ -77,7 +78,7 @@ export default function ResetPasswordForm(){
                         autoComplete="off"
                     />
                     <ShinyButton type="submit" disabled={isLoading}>
-                        {isLoading ? "Enviando..." : "Enviar código para redefinição de senha"}
+                        {isLoading ? <LoadingSpinner /> : "Enviar código para redefinição de senha"}
                     </ShinyButton>
                 </>
              )}
@@ -104,7 +105,7 @@ export default function ResetPasswordForm(){
                         autoComplete="off"
                     />
                     <ShinyButton type="submit">
-                        {isLoading ? "Redefinindo..." : "Redefinir senha"}
+                        {isLoading ? <LoadingSpinner /> : "Redefinir senha"}
                     </ShinyButton>
                 </>
              )}

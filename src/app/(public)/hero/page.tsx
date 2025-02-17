@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero(){
     return(
@@ -9,18 +10,18 @@ export default function Hero(){
                 <p className="text-zinc-600">Aqui você pode cadastrar e gerenciar os livros que você possui, além de <span className="text-primary-600">criar anotações</span> sobre eles.</p>
                 <p className="font-bold text-xl mt-3">Vamos começar?</p>
                 <div className="flex items-center gap-3 mt-5 flex-wrap">
-                    <a 
+                    <Link 
                         href="/register" 
                         className="w-full sm:max-w-fit text-center px-6 py-2 rounded-lg hover:text-white hover:bg-primary-500 transition-colors shadow-lg border"
                     >
                         Registrar conta
-                    </a>
-                    <a 
+                    </Link>
+                    <Link 
                         href="/login" 
                         className="w-full sm:max-w-fit text-center px-6 py-2 rounded-lg hover:text-white hover:bg-primary-500 transition-colors shadow-lg border"
                     >
                         Entrar
-                    </a>
+                    </Link>
                 </div>
             </div>
         </main>

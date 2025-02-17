@@ -5,7 +5,7 @@ import { getTotalBooksAction } from "@/actions/book-actions";
 import { BOOK_STATUS } from "@/models/Book";
 import { getTotalNotesAction } from "@/actions/note-actions";
 import { Suspense } from "react";
-import Loading from "@/app/components/layout/Loading";
+import Loading from "@/app/components/layout/LoadingPage";
 
 interface DashboardData {
   id: number

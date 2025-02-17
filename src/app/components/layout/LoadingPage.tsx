@@ -1,4 +1,4 @@
-export default function Loading(){
+export default function LoadingPage(){
     return(
         <div className="flex-col gap-4 w-full fixed inset-0 bg-black bg-opacity-50 z-50 
             flex items-center justify-center">

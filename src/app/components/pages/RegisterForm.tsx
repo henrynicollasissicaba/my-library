@@ -7,6 +7,8 @@ import { useSignUp } from "@clerk/nextjs"
 import { isClerkAPIResponseError } from "@clerk/nextjs/errors"
 import { toast } from "sonner"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
+import LoadingSpinner from "../layout/LoadingSpinner"
 
 export default function RegisterForm(){
     const [firstName, setFirstName] = useState("")
@@ -50,7 +52,7 @@ export default function RegisterForm(){
 
     useEffect(() => {
         if(verifying){
-            router.push("/verify-email")
+            router.push('/verify-email')
         }
     }, [verifying])
 
@@ -94,11 +96,11 @@ export default function RegisterForm(){
             />
             <div id="clerk-captcha"></div>
             <ShinyButton className="mt-2" typeof="submit" disabled={isLoading}>
-                {isLoading ? "Cadastrando..." : "Cadastrar"}
+                {isLoading ? <LoadingSpinner /> : "Cadastrar"}
             </ShinyButton>
-            <a href="/login" className="text-sm hover:text-primary-500 transition-colors p-1 text-center">
+            <Link href="/login" className="text-sm hover:text-primary-500 transition-colors p-1 text-center">
                 Já possui uma conta? Clique aqui para entrar
-            </a>
+            </Link>
         </form>
     )
 }

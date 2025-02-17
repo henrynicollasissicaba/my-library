@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation"
 import { useSignUp } from "@clerk/nextjs"
 import { toast } from "sonner"
 import { isClerkAPIResponseError } from "@clerk/nextjs/errors"
+import LoadingSpinner from "../layout/LoadingSpinner"
 
 export default function VerifyEmailForm(){
     const [code, setCode] = useState("")
@@ -76,12 +77,12 @@ export default function VerifyEmailForm(){
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
             />
-            <div className="flex justify-between gap-2 flex-wrap">
-                <ShinyButton type="button" onClick={handleResendCode} className="w-full sm:w-auto">
-                    {isLoadingResendCode ? "Reenviando..." : "Reenviar código"}
+            <div className="flex gap-2 flex-col">
+                <ShinyButton type="button" onClick={handleResendCode}>
+                    {isLoadingResendCode ? <LoadingSpinner /> : "Renviar código"}
                 </ShinyButton>
-                <ShinyButton type="submit" className="w-full sm:w-auto">
-                    {isLoadingVerifyingCode ? "Verificando..." : "Verificar"}
+                <ShinyButton type="submit">
+                    {isLoadingVerifyingCode ? <LoadingSpinner /> : "Verificar"}
                 </ShinyButton>
             </div>
         </form>

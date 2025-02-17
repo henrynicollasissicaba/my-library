@@ -7,6 +7,9 @@ import { useRouter } from "next/navigation";
 import { useSignIn } from "@clerk/nextjs";
 import { isClerkAPIResponseError } from "@clerk/nextjs/errors";
 import { toast } from "sonner";
+import Link from "next/link"
+import Loading from "../layout/LoadingPage";
+import LoadingSpinner from "../layout/LoadingSpinner";
 
 export default function LoginForm(){
     const [email, setEmail] = useState("")
@@ -65,16 +68,16 @@ export default function LoginForm(){
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <a href="/reset-password" className="flex justify-end text-sm hover:text-primary-500 transition-colors p-1">
+                <Link href="/reset-password" className="flex justify-end text-sm hover:text-primary-500 transition-colors p-1">
                     Esqueci minha senha
-                </a>
+                </Link>
             </div>
             <ShinyButton typeof="submit" disabled={isLoading}>
-                {isLoading ? "Entrando..." : "Entrar"}
+                {isLoading ? <LoadingSpinner /> : "Entrar"}
             </ShinyButton>
-            <a href="/register" className="text-sm hover:text-primary-500 transition-colors p-1 text-center">
+            <Link href="/register" className="text-sm hover:text-primary-500 transition-colors p-1 text-center">
                 Não possui conta? Clique aqui para criar
-            </a>
+            </Link>
         </form>
     )
 }
