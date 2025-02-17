@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod"
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import Input from '../ui/Input';
@@ -32,15 +32,24 @@ export default function ConfirmationBookModal({
             resolver: zodResolver(updateBookSchema), mode: "onChange"
     })
 
+    const [isLoading, setIsLoading] = useState(true)
+
     useEffect(() => {
-        getBookAction(bookId).then((book) => {
-            if(book){
-                setValue("title", book.title)
-                setValue("author", book.author)
-                setValue("number_of_pages", Number(book.number_of_pages))
-                setValue("category", book.category || booksCategory[0])
-            }
-        })
+        try {
+            getBookAction(bookId).then((book) => {
+                if(book){
+                    setValue("title", book.title)
+                    setValue("author", book.author)
+                    setValue("number_of_pages", Number(book.number_of_pages))
+                    setValue("category", book.category || booksCategory[0])
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setIsLoading(false)
+        }
+
     }, [bookId, setValue])
 
     useEffect(() => {
@@ -83,6 +92,8 @@ export default function ConfirmationBookModal({
         }
     }
 
+    const title = watch("title")
+    const author = watch("author")
     const numberOfPages = watch("number_of_pages")
     const category = watch("category") || ""
 
@@ -109,6 +120,8 @@ export default function ConfirmationBookModal({
                     fullWidth 
                     size="small"
                     error={!!errors.title}
+                    value={isLoading ? "Carregando título atual..." : title}
+                    disabled={isLoading}
                 />
                 <Input 
                     {...register("author")}
@@ -117,6 +130,8 @@ export default function ConfirmationBookModal({
                     fullWidth 
                     size="small" 
                     error={!!errors.author}
+                    value={isLoading ? "Carregando autor atual..." : author}
+                    disabled={isLoading}
                 />
                 <Input
                     {...register("number_of_pages")}
@@ -125,9 +140,10 @@ export default function ConfirmationBookModal({
                     fullWidth 
                     size="small"
                     error={!!errors.number_of_pages}
-                    value={numberOfPages || ''}
+                    value={isLoading ? "Carregando número de páginas..." : numberOfPages || ""}
                     onChange={handleNumberOfPagesChange}
                     type="number"
+                    disabled={isLoading}
                 />
                 <Input
                     {...register("category")}
@@ -135,9 +151,10 @@ export default function ConfirmationBookModal({
                     label="Categoria"
                     helperText="* Selecione a categoria do livro"
                     error={!!errors.category}
-                    value={category}
+                    value={isLoading ? "Carregando categoria...": category}
                     size="small"
                     fullWidth
+                    disabled={isLoading}
                 >
                     {booksCategory.map((category) => (
                         <MenuItem key={category} value={category}>

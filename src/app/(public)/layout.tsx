@@ -11,7 +11,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: "My Library | Public",
+  title: "My Library",
   description: "Uma aplicação web para cadastrar e gerenciar os livros que você possui, além de poder criar anotações sobre eles.",
 };
 
@@ -23,6 +23,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="pt-BR">
+        <head>
+          <link rel="icon" href="/favicon.ico" sizes="any" />
+        </head>
         <body
           className={`${poppins.className} antialiased`}
         >
