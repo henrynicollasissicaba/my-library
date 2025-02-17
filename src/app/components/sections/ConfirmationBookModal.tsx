@@ -28,25 +28,20 @@ export default function ConfirmationBookModal({
   onCloseModal,
   bookId
 }: ConfirmationBookModalProps) {
-    const [title, setTitle] = useState("")
-    const [author, setAuthor] = useState("")
-    const [numberOfPages, setNumberOfPages] = useState(0)
-    const [category, setCategory] = useState("")
-
-    const { register, handleSubmit, formState: { errors } } = useForm<UpdateBookFormData>({
-            resolver: zodResolver(updateBookSchema)
+    const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<UpdateBookFormData>({
+            resolver: zodResolver(updateBookSchema), mode: "onChange"
     })
 
     useEffect(() => {
         getBookAction(bookId).then((book) => {
             if(book){
-                setTitle(book.title)
-                setAuthor(book.author)
-                setNumberOfPages(book.number_of_pages)
-                setCategory(book.category)
+                setValue("title", book.title)
+                setValue("author", book.author)
+                setValue("number_of_pages", Number(book.number_of_pages))
+                setValue("category", book.category || booksCategory[0])
             }
         })
-    }, [bookId])
+    }, [bookId, setValue])
 
     useEffect(() => {
         const errorMessages = Object.values(errors).map(error => error?.message)
@@ -60,7 +55,9 @@ export default function ConfirmationBookModal({
         try {
             const formData = new FormData()
             Object.entries(data).forEach(([key, value]) => {
-                formData.append(key, value.toString())
+                if(value !== undefined){
+                    formData.append(key, value.toString())
+                }
             })
 
             toast.promise(updateBookAction(bookId, formData), {
@@ -82,9 +79,12 @@ export default function ConfirmationBookModal({
         const numValue = value ? Number(value) : 0
         
         if (numValue < 4000) { 
-            setNumberOfPages(numValue)
+            setValue("number_of_pages", numValue)
         }
     }
+
+    const numberOfPages = watch("number_of_pages")
+    const category = watch("category") || ""
 
   return (
     <Dialog
@@ -109,8 +109,6 @@ export default function ConfirmationBookModal({
                     fullWidth 
                     size="small"
                     error={!!errors.title}
-                    value={title} 
-                    onChange={(e) => setTitle(e.target.value)}
                 />
                 <Input 
                     {...register("author")}
@@ -119,8 +117,6 @@ export default function ConfirmationBookModal({
                     fullWidth 
                     size="small" 
                     error={!!errors.author}
-                    value={author} 
-                    onChange={(e) => setAuthor(e.target.value)}
                 />
                 <Input
                     {...register("number_of_pages")}
@@ -129,8 +125,9 @@ export default function ConfirmationBookModal({
                     fullWidth 
                     size="small"
                     error={!!errors.number_of_pages}
-                    value={numberOfPages} 
+                    value={numberOfPages || ''}
                     onChange={handleNumberOfPagesChange}
+                    type="number"
                 />
                 <Input
                     {...register("category")}
@@ -138,8 +135,7 @@ export default function ConfirmationBookModal({
                     label="Categoria"
                     helperText="* Selecione a categoria do livro"
                     error={!!errors.category}
-                    defaultValue={category}
-                    onChange={(e) => setCategory(e.target.value)}
+                    value={category}
                     size="small"
                     fullWidth
                 >
