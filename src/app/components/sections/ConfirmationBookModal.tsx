@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod"
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import Input from '../ui/Input';
@@ -32,8 +32,6 @@ export default function ConfirmationBookModal({
             resolver: zodResolver(updateBookSchema), mode: "onChange"
     })
 
-    const [isLoading, setIsLoading] = useState(true)
-
     useEffect(() => {
         try {
             getBookAction(bookId).then((book) => {
@@ -46,9 +44,7 @@ export default function ConfirmationBookModal({
             })
         } catch (error) {
             console.log(error)
-        } finally {
-            setIsLoading(false)
-        }
+        } 
 
     }, [bookId, setValue])
 
@@ -120,8 +116,7 @@ export default function ConfirmationBookModal({
                     fullWidth 
                     size="small"
                     error={!!errors.title}
-                    value={isLoading ? "Carregando título atual..." : title}
-                    disabled={isLoading}
+                    value={title}
                 />
                 <Input 
                     {...register("author")}
@@ -130,8 +125,7 @@ export default function ConfirmationBookModal({
                     fullWidth 
                     size="small" 
                     error={!!errors.author}
-                    value={isLoading ? "Carregando autor atual..." : author}
-                    disabled={isLoading}
+                    value={author}
                 />
                 <Input
                     {...register("number_of_pages")}
@@ -140,10 +134,9 @@ export default function ConfirmationBookModal({
                     fullWidth 
                     size="small"
                     error={!!errors.number_of_pages}
-                    value={isLoading ? "Carregando número de páginas..." : numberOfPages || ""}
+                    value={numberOfPages || ""}
                     onChange={handleNumberOfPagesChange}
                     type="number"
-                    disabled={isLoading}
                 />
                 <Input
                     {...register("category")}
@@ -151,10 +144,9 @@ export default function ConfirmationBookModal({
                     label="Categoria"
                     helperText="* Selecione a categoria do livro"
                     error={!!errors.category}
-                    value={isLoading ? "Carregando categoria...": category}
+                    value={category}
                     size="small"
                     fullWidth
-                    disabled={isLoading}
                 >
                     {booksCategory.map((category) => (
                         <MenuItem key={category} value={category}>
