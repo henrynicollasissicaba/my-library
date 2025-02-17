@@ -3,7 +3,7 @@
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod"
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import Input from '../ui/Input';
@@ -44,7 +44,7 @@ export default function ConfirmationBookModal({
             })
         } catch (error) {
             console.log(error)
-        } 
+        }
 
     }, [bookId, setValue])
 
@@ -88,8 +88,6 @@ export default function ConfirmationBookModal({
         }
     }
 
-    const title = watch("title")
-    const author = watch("author")
     const numberOfPages = watch("number_of_pages")
     const category = watch("category") || ""
 
@@ -116,7 +114,7 @@ export default function ConfirmationBookModal({
                     fullWidth 
                     size="small"
                     error={!!errors.title}
-                    value={title}
+                    slotProps={{ inputLabel: { shrink: Boolean(watch("title")) } }}
                 />
                 <Input 
                     {...register("author")}
@@ -125,7 +123,7 @@ export default function ConfirmationBookModal({
                     fullWidth 
                     size="small" 
                     error={!!errors.author}
-                    value={author}
+                    slotProps={{ inputLabel: { shrink: Boolean(watch("author")) } }}
                 />
                 <Input
                     {...register("number_of_pages")}

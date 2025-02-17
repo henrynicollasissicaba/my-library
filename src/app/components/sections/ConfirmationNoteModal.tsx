@@ -30,7 +30,7 @@ export default function ConfirmationNoteModal({
     const [content, setContent] = useState("")
     const [isLoadingContent, setIsLoadingContent] = useState(true)
 
-    const { register, handleSubmit, formState: { errors } } = useForm<UpdateNoteFormData>({
+    const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm<UpdateNoteFormData>({
             resolver: zodResolver(updateNoteSchema)
     })
 
@@ -39,7 +39,7 @@ export default function ConfirmationNoteModal({
             try {
                 const content = await getNoteAction(noteId)
                 if(!content) return
-                setContent(content?.content)
+                setContent(content.content)
 
             } catch (error) {
                 console.log(error)
@@ -50,6 +50,12 @@ export default function ConfirmationNoteModal({
 
         fetchNote()
     }, [noteId])
+
+    useEffect(() => {
+        if(!isLoadingContent){
+            setValue("content", content)
+        }
+    }, [isLoadingContent, content, setValue])
 
     useEffect(() => {
         const errorMessages = Object.values(errors).map(error => error?.message)
@@ -104,10 +110,9 @@ export default function ConfirmationNoteModal({
                     fullWidth 
                     size="small"
                     error={!!errors.content}
-                    value={isLoadingContent ? "Carregando anotação atual, aguarde..." : content}
                     disabled={isLoadingContent}
-                    onChange={(e) => setContent(e.target.value)}
                     className="disabled:bg-stone-300 disabled:cursor-not-allowed"
+                    slotProps={{ inputLabel: { shrink: Boolean(watch("content")) } }}
                 />
                 <ShinyButton type="submit">Atualizar anotação</ShinyButton>
             </form>
