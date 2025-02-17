@@ -70,6 +70,7 @@ export default function ConfirmationBookModal({
 
         } catch (error) {
             toast.error("Erro ao atualizar um livro")
+            console.log(error)
         } finally {
             onClose()
             onCloseModal()

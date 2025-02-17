@@ -50,6 +50,7 @@ export default function CreateBookForm(){
             reset()
         } catch (error) {
             toast.error("Erro ao cadastrar um livro!")
+            console.log(error)
         }
     }
 

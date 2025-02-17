@@ -22,7 +22,7 @@ export default function BookDialogComponent({ bookId, bookStatus }: { bookId: nu
         const totalNotes = await getTotalNotesByBookAction(bookId)
 
         if(totalNotes > 0){
-            let otherText = `Ao excluir esse livro, estará excluindo ${totalNotes} anotações. Essa é uma ação irreversível!`
+            const otherText = `Ao excluir esse livro, estará excluindo ${totalNotes} anotações. Essa é uma ação irreversível!`
             result = await showCustomAlert({ title, confirmButtonText, otherText })
         } else {
             result = await showCustomAlert({ title, confirmButtonText })
@@ -42,6 +42,7 @@ export default function BookDialogComponent({ bookId, bookStatus }: { bookId: nu
 
             } catch (error) {
                 toast.error("Algo deu errado ao excluir o livro. Tente novamente!")
+                console.log(error)
             } finally {
                 setIsDeleting(false)
             }
@@ -63,6 +64,7 @@ export default function BookDialogComponent({ bookId, bookStatus }: { bookId: nu
     
             } catch (error) {
                 toast.error("Algo deu errado ao iniciar a leitura. Tente novamente!")
+                console.log(error)
     
             } finally {
                 setOpenDialog(false)
@@ -85,6 +87,7 @@ export default function BookDialogComponent({ bookId, bookStatus }: { bookId: nu
     
             } catch (error) {
                 toast.error("Algo deu errado ao marcar como lido. Tente novamente!")
+                console.log(error)
     
             } finally {
                 setOpenDialog(false)

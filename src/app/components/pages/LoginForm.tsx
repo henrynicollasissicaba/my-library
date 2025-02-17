@@ -8,7 +8,6 @@ import { useSignIn } from "@clerk/nextjs";
 import { isClerkAPIResponseError } from "@clerk/nextjs/errors";
 import { toast } from "sonner";
 import Link from "next/link"
-import Loading from "../layout/LoadingPage";
 import LoadingSpinner from "../layout/LoadingSpinner";
 
 export default function LoginForm(){

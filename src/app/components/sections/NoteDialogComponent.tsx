@@ -29,6 +29,7 @@ export default function NoteDialogComponent({ noteId }: { noteId: number }){
 
             } catch (error) {
                 toast.error("Algo deu errado ao excluir a anotação. Tente novamente!")
+                console.log(error)
             } finally {
                 setIsDeleting(false)
                 setOpenDialog(false)

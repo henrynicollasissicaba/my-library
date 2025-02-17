@@ -39,6 +39,7 @@ export default function CreateNoteForm({ bookId }: { bookId: number }){
             reset()
         } catch (error) {
             toast.error("Erro ao criar uma anotação!")
+            console.log(error)
         }
     }
 
