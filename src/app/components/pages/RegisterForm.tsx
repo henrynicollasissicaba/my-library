@@ -54,7 +54,7 @@ export default function RegisterForm(){
         if(verifying){
             router.push('/verify-email')
         }
-    }, [router])
+    }, [router, verifying])
 
     return(
         <form onSubmit={handleSubmit} className="max-w-96 w-full flex flex-col gap-4">

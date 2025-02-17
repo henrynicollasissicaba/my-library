@@ -49,7 +49,7 @@ export default function ConfirmationNoteModal({
         }
 
         fetchNote()
-    }, [])
+    }, [noteId])
 
     useEffect(() => {
         const errorMessages = Object.values(errors).map(error => error?.message)
@@ -71,6 +71,7 @@ export default function ConfirmationNoteModal({
 
         } catch (error) {
             toast.error("Erro ao atualizar uma anotação!")
+            console.log(error)
 
         } finally {
             onClose()
