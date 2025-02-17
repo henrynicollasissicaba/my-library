@@ -38,7 +38,7 @@ model Book {
   updatedAt DateTime @updatedAt
 
   userId String
-  user User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   notes Note[]
 }
