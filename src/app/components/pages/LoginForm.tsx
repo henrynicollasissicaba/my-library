@@ -54,6 +54,7 @@ export default function LoginForm(){
                 variant="outlined" 
                 size="small" 
                 fullWidth
+                autoComplete="off"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />

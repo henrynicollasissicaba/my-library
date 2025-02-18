@@ -80,7 +80,8 @@ export default function RegisterForm(){
                 label="Endereço de email válido" 
                 helperText="* Você receberá um código de validação por email" 
                 variant="outlined" 
-                size="small" 
+                size="small"
+                autoComplete="off"
                 fullWidth
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
